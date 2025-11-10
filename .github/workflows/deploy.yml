@@ -40,17 +40,16 @@ jobs:
           name: python-app
           path: .
 
-      # ✅ Azure Login using the Publish Profile Secret
-      - name: Login to Azure
+      # ✅ Login with publish profile secret
+      - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
 
-      # ✅ Deploy to Azure Web App
+      # ✅ Deploy the app
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'azurecms'  # your Azure Web App name
-          slot-name: 'Production'
+          app-name: 'azurecms'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: .
