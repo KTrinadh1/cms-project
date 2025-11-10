@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  web:
+    # uild the image from Dockerfile in current directory
+    build: .
+
+    # Map container port 5000 to host port 5000
+    ports:
+      - "5000:5000"
+
+    # Mount the current directory (so changes are reflected without rebuilding)
+    volumes:
+      - .:/app
+
+    # Set environment variable for production mode
+    environment:
+      - FLASK_ENV=production
+
+    # Optional: Restart policy for observability
+    restart: always
