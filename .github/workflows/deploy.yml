@@ -29,13 +29,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # ✅ Login using the publish profile
+      # ✅ This is the missing login step!
       - name: Azure WebApp Login
         uses: azure/login@v1
         with:
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
 
-      # ✅ Deploy to Azure
+      # ✅ Deployment step
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
